@@ -11,8 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
-import { FetchPolicyComponent } from './fetchpolicy/fetchpolicy.component'
-import { createpolicy } from './addpolicy/AddPolicy.component'
+import { FetchPolicyComponent } from './fetchpolicy/fetchpolicy.component';
+import { AddPolicyComponent } from './addpolicy/addpolicy.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { createpolicy } from './addpolicy/AddPolicy.component'
     CounterComponent,
     FetchDataComponent,
     FetchPolicyComponent,
-    createpolicy,
+    AddPolicyComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -32,8 +32,8 @@ import { createpolicy } from './addpolicy/AddPolicy.component'
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'fetch-policy', component: FetchPolicyComponent },
-      { path: 'register-policy', component: createpolicy },
-      { path: 'policy/edit/:id', component: createpolicy },
+      { path: 'register-policy', component: AddPolicyComponent },
+      { path: 'policy/edit/:id', component: AddPolicyComponent },
       { path: '**', redirectTo: 'home' }  
     ])
   ],

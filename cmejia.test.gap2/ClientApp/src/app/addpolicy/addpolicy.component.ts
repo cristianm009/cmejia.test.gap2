@@ -4,20 +4,22 @@ import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angula
 import { Router, ActivatedRoute } from '@angular/router';
 import { FetchPolicyComponent } from '../fetchpolicy/fetchpolicy.component';
 import { PolicyService } from '../services/policyservice.service';
-import { TypeRisk } from 'src/models/typeRisk';
-import { TypeCovering } from 'src/models/typeCovering';
+import { TypeRisk } from '../../models/typeRisk';
+import { TypeCovering } from '../../models/typeCovering';
+import { Response } from '@angular/http';
 
 @Component({
-  templateUrl: './AddPolicy.component.html'
+  templateUrl: './addpolicy.component.html'
 })
 
-export class createpolicy implements OnInit {
+export class AddPolicyComponent implements OnInit {
+
   policyForm: FormGroup;
   title: string = "Create";
   policyId: number;
   errorMessage: any;
-  typeRiskList: TypeRisk[];
-  typeCoveringList: TypeCovering[];
+  typeRiskList: Array<any> =[];
+  typeCoveringList: Array<any> =[];
 
   constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
     private _policyService: PolicyService, private _router: Router) {
@@ -40,11 +42,11 @@ export class createpolicy implements OnInit {
   ngOnInit() {
 
     this._policyService.getTypeRisk().subscribe(
-      (data: TypeRisk[]) => this.typeRiskList = data
+      data => this.typeRiskList = data  
     );
 
     this._policyService.getTypeCovering().subscribe(
-      (data: TypeCovering[]) => this.typeCoveringList = data
+      data => this.typeCoveringList = data  
     );
 
     if (this.policyId > 0) {

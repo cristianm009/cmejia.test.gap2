@@ -1,12 +1,16 @@
 import { Injectable, Inject } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { Policy } from '../../models/policy';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class PolicyService {
   myAppUrl: string = "";
 
@@ -15,26 +19,21 @@ export class PolicyService {
   }
 
   getTypeRisk() {
-    return this._http.get(this.myAppUrl + 'api/Employee/GetTypeRisk')
-      .pipe(map(
-        response => {
-          return response;
-        }));
+    return this._http.get(this.myAppUrl + 'api/Policy/GetTypeRisk')
+      .map(res => res.json())
+      .catch(this.errorHandler);
   }
 
   getTypeCovering() {
-    return this._http.get(this.myAppUrl + 'api/Employee/GetTypeCovering')
-      .pipe(map(
-        response => {
-          return response;
-        }));
+    return this._http.get(this.myAppUrl + 'api/Policy/GetTypeCovering')
+      .map(res => res.json())
+      .catch(this.errorHandler);
   }
 
   getPolicys() {
-    return this._http.get(this.myAppUrl + 'api/Policy/Index').pipe(map(
-      response => {
-        return response;
-      }));
+    return this._http.get(this.myAppUrl + 'api/Policy/Index')
+      .map(res => res.json())
+      .catch(this.errorHandler);
   }
 
   getPolicyById(id: number) {

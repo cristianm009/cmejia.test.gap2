@@ -1,14 +1,15 @@
 import { Component, Inject } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PolicyService } from '../services/policyservice.service'
+import { PolicyService } from '../services/policyservice.service';
+import { Policy } from '../../models/policy';
 
 @Component({
-  templateUrl: './fetchPolicy.component.html'
+  templateUrl: './fetchpolicy.component.html'
 })
 
 export class FetchPolicyComponent {
-  public empList: PolicyData[];
+  public policyList: Policy[];
 
   constructor(public http: Http, private _router: Router, private _PolicyService: PolicyService) {
     this.getPolicys();
@@ -16,7 +17,7 @@ export class FetchPolicyComponent {
 
   getPolicys() {
     this._PolicyService.getPolicys().subscribe(
-      data => this.empList = data
+      (data: Policy[]) => this.policyList = data
     )
   }
 
