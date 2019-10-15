@@ -1,23 +1,17 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using cmejia.test.gap2.Interfaces;
+using cmejia.test.gap2.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace cmejia.test.gap2.Models
+namespace cmejia.test.gap2.DataAccess
 {
-    public class PolicyDataAccessLayer
+    public class PolicyDataAccessLayer : IPolicy
     {
-        dbtestcmgapContext db = new dbtestcmgapContext();
-
-        public IEnumerable<Policy> GetAllPolicies()
+        private myTestDBContext db;
+        public PolicyDataAccessLayer(myTestDBContext db)
         {
-            try
-            {
-                return db.Policy.ToList();
-            }
-            catch
-            {
-                throw;
-            }
+            this.db = db;
         }
         public int AddPolicy(Policy policy)
         {
@@ -83,7 +77,19 @@ namespace cmejia.test.gap2.Models
             return lstTypeRisk;
         }
 
-        public List<TypeCovering> GetTypeCovering()
+        public IEnumerable<Policy> GetAllPolicy()
+        {
+            try
+            {
+                return db.Policy.ToList();
+            }
+            catch
+            {
+                throw;
+            }
+        }
+
+        public List<TypeCovering> GetTypeCoverings()
         {
             List<TypeCovering> lstTypeCovering = new List<TypeCovering>();
             lstTypeCovering = (from TypeCoveringList in db.TypeCovering select TypeCoveringList).ToList();

@@ -1,4 +1,6 @@
-﻿using cmejia.test.gap2.Models;
+﻿using cmejia.test.gap2.DataAccess;
+using cmejia.test.gap2.Interfaces;
+using cmejia.test.gap2.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -7,13 +9,18 @@ namespace cmejia.test.gap2.Controllers
     [Route("api/[controller]")]
     public class PolicyController : Controller
     {
-        PolicyDataAccessLayer objpolicy = new PolicyDataAccessLayer();
+        private readonly IPolicy objpolicy;
+
+        public PolicyController(IPolicy objpolicy)
+        {
+            this.objpolicy = objpolicy;
+        }
 
         [HttpGet]
         [Route("api/Policy/Index")]
         public IEnumerable<Policy> Index()
         {
-            return objpolicy.GetAllPolicies();
+            return objpolicy.GetAllPolicy();
         }
 
         [HttpPost]
@@ -45,17 +52,17 @@ namespace cmejia.test.gap2.Controllers
         }
 
         [HttpGet]
-        [Route("api/Policy/GetTypeRisks")]
+        [Route("api/Policy/GetTypeRisk")]
         public IEnumerable<TypeRisk> TypeRiskDetails()
         {
             return objpolicy.GetTypeRisks();
         }
 
         [HttpGet]
-        [Route("api/Policy/TypeCovering")]
+        [Route("api/Policy/GetTypeCovering")]
         public IEnumerable<TypeCovering> TypeCoveringDetails()
         {
-            return objpolicy.GetTypeCovering();
+            return objpolicy.GetTypeCoverings();
         }
     }
 }

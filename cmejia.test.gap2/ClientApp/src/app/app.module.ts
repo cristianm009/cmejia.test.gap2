@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { PolicyService } from './services/policyservice.service'
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,25 +11,33 @@ import { HomeComponent } from './home/home.component';
 import { CounterComponent } from './counter/counter.component';
 import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
+import { FetchPolicyComponent } from './fetchpolicy/fetchpolicy.component'
+import { createpolicy } from './addpolicy/AddPolicy.component'
+
 @NgModule({
   declarations: [
     AppComponent,
     NavMenuComponent,
     HomeComponent,
     CounterComponent,
-    FetchDataComponent
+    FetchDataComponent,
+    FetchPolicyComponent,
+    createpolicy,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', component: HomeComponent },
+      { path: 'fetch-policy', component: FetchPolicyComponent },
+      { path: 'register-policy', component: createpolicy },
+      { path: 'policy/edit/:id', component: createpolicy },
+      { path: '**', redirectTo: 'home' }  
     ])
   ],
-  providers: [],
+  providers: [PolicyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

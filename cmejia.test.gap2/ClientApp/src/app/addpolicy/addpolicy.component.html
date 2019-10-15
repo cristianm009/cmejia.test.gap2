@@ -1,0 +1,68 @@
+<h1>{{title}}</h1>
+<h3>Policy</h3>
+<hr />
+<form [formGroup]="policyForm" (ngSubmit)="save()" #formDir="ngForm" novalidate>
+
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Name</label>
+    <div class="col-md-4">
+      <input class="form-control" type="text" formControlName="name">
+    </div>
+    <span class="text-danger" *ngIf="name.invalid && formDir.submitted">
+      Name is required.
+    </span>
+  </div>
+
+  <div class="form-group row">
+    <label class="control-label col-md-12" for="City">City</label>
+    <div class="col-md-4">
+      <select class="form-control" data-val="true" formControlName="city">
+        <option value="">--Select City--</option>
+        <option *ngFor="let city of cityList"
+                value={{city.cityName}}>
+          {{city.cityName}}
+        </option>
+      </select>
+    </div>
+    <span class="text-danger" *ngIf="city.invalid && formDir.submitted">
+      City is required
+    </span>
+  </div>
+
+  <div class="form-group row">
+    <label class="control-label col-md-12" for="TypeRisk">TypeRisk</label>
+    <div class="col-md-4">
+      <select class="form-control" data-val="true" formControlName="typeRisk">
+        <option value="">--Select Type Risk--</option>
+        <option *ngFor="let typeRisk of typeRiskList"
+                value={{typeRisk.name}}>
+          {{typeRisk.name}}
+        </option>
+      </select>
+    </div>
+    <span class="text-danger" *ngIf="city.invalid && formDir.submitted">
+      Type Risk is required
+    </span>
+  </div>
+
+  <div class="form-group row">
+    <label class="control-label col-md-12" for="TypeCovering">TypeCovering</label>
+    <div class="col-md-4">
+      <select class="form-control" data-val="true" formControlName="typeCovering">
+        <option value="">--Select Type Covering--</option>
+        <option *ngFor="let typeCovering of typeCoveringList"
+                value={{typeCovering.name}}>
+          {{typeCovering.name}}
+        </option>
+      </select>
+    </div>
+    <span class="text-danger" *ngIf="city.invalid && formDir.submitted">
+      Type Covering is required
+    </span>
+  </div>
+
+  <div class="form-group">
+    <button type="submit" class="btn btn-default">Save</button>
+    <button class="btn" (click)="cancel()">Cancel</button>
+  </div>
+</form>

@@ -1,16 +1,14 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace cmejia.test.gap2.Models
 {
-    public partial class dbtestcmgapContext : DbContext
+    public partial class myTestDBContext : DbContext
     {
-        public dbtestcmgapContext()
+        public myTestDBContext()
         {
         }
 
-        public dbtestcmgapContext(DbContextOptions<dbtestcmgapContext> options)
+        public myTestDBContext(DbContextOptions<myTestDBContext> options)
             : base(options)
         {
         }

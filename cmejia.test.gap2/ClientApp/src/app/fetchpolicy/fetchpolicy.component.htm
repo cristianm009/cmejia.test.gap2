@@ -1,0 +1,41 @@
+<h1>Policy Data</h1>
+
+<p>This component demonstrates fetching Policy data from the server.</p>
+
+<p *ngIf="!empList"><em>Loading...</em></p>
+
+<p>
+  <a [routerLink]="['/register-Policy']">Create New</a>
+</p>
+
+<table class='table' *ngIf="empList">
+  <thead>
+    <tr>
+      <th>PolicyId</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Start Vadility Time</th>
+      <th>Coverage Time</th>
+      <th>Price</th>
+      <th>Type Risk</th>
+      <th>Type Covering</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of empList">
+      <td>{{ emp.policyId }}</td>
+      <td>{{ emp.name }}</td>
+      <td>{{ emp.description }}</td>
+      <td>{{ emp.startVadilityTime }}</td>
+      <td>{{ emp.coveragetime }}</td>
+      <td>{{ emp.price }}</td>
+      <td>{{ emp.typeRisk }}</td>
+      <td>{{ emp.typeCovering }}</td>
+      <td>
+      <td>
+        <a [routerLink]="['/Policy/edit/', emp.PolicyId]">Edit</a> |
+        <a [routerLink]="" (click)="delete(emp.PolicyId)">Delete</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
