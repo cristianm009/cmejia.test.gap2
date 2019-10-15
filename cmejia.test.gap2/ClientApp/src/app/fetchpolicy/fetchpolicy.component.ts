@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import { Router, ActivatedRoute } from '@angular/router';
-import { PolicyService } from '../../services/empservice.service'
+import { PolicyService } from '../services/policyservice.service'
 
 @Component({
   templateUrl: './fetchPolicy.component.html'

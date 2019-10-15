@@ -33,12 +33,41 @@
     <None Remove="ClientApp\src\app\addpolicy\addpolicy.component.ts" />
     <None Remove="ClientApp\src\app\fetchpolicy\fetchpolicy.component.ts" />
     <None Remove="ClientApp\src\app\services\policyservice.service.ts" />
+    <None Remove="ClientApp\src\models\client.ts" />
+    <None Remove="ClientApp\src\models\policy.ts" />
+    <None Remove="ClientApp\src\models\typeCovering.ts" />
+    <None Remove="ClientApp\src\models\typeRisk.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\addpolicy\addpolicy.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\fetchpolicy\fetchpolicy.component.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\services\policyservice.service.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\typeRisk.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\typeCovering.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\client.ts" />
+    <TypeScriptCompile Include="ClientApp\src\models\policy.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="ClientApp\src\models\typeRisk.js">
+      <DependentUpon>typeRisk.ts</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\models\typeRisk.js.map">
+      <DependentUpon>typeRisk.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\models\typeCovering.js">
+      <DependentUpon>typeCovering.ts</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\models\typeCovering.js.map">
+      <DependentUpon>typeCovering.js</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\models\client.js">
+      <DependentUpon>client.ts</DependentUpon>
+    </None>
+    <None Update="ClientApp\src\models\client.js.map">
+      <DependentUpon>client.js</DependentUpon>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

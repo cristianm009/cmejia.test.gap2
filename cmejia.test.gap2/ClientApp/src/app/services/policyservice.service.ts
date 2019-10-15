@@ -15,21 +15,26 @@ export class PolicyService {
   }
 
   getTypeRisk() {
-    return this._http.get(this.myAppUrl + 'api/Policy/GetTypeRisk')
-      .map(res => res.json())
-      .catch(this.errorHandler);
+    return this._http.get(this.myAppUrl + 'api/Employee/GetTypeRisk')
+      .pipe(map(
+        response => {
+          return response;
+        }));
   }
 
   getTypeCovering() {
-    return this._http.get(this.myAppUrl + 'api/Policy/GetTypeCovering')
-      .map(res => res.json())
-      .catch(this.errorHandler);
+    return this._http.get(this.myAppUrl + 'api/Employee/GetTypeCovering')
+      .pipe(map(
+        response => {
+          return response;
+        }));
   }
 
   getPolicys() {
-    return this._http.get(this.myAppUrl + 'api/Policy/Index')
-      .map((response: Response) => response.json())
-      .catch(this.errorHandler);
+    return this._http.get(this.myAppUrl + 'api/Policy/Index').pipe(map(
+      response => {
+        return response;
+      }));
   }
 
   getPolicyById(id: number) {

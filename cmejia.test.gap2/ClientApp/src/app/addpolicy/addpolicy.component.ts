@@ -3,7 +3,9 @@ import { Http, Headers } from '@angular/http';
 import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FetchPolicyComponent } from '../fetchpolicy/fetchpolicy.component';
-import { PolicyService } from '../../services/empservice.service';
+import { PolicyService } from '../services/policyservice.service';
+import { TypeRisk } from 'src/models/typeRisk';
+import { TypeCovering } from 'src/models/typeCovering';
 
 @Component({
   templateUrl: './AddPolicy.component.html'
@@ -14,8 +16,8 @@ export class createpolicy implements OnInit {
   title: string = "Create";
   policyId: number;
   errorMessage: any;
-  typeRiskList: Array<any> = [];
-  typeCoveringList: Array<any> = [];
+  typeRiskList: TypeRisk[];
+  typeCoveringList: TypeCovering[];
 
   constructor(private _fb: FormBuilder, private _avRoute: ActivatedRoute,
     private _policyService: PolicyService, private _router: Router) {
@@ -38,11 +40,12 @@ export class createpolicy implements OnInit {
   ngOnInit() {
 
     this._policyService.getTypeRisk().subscribe(
-      data => this.typeRiskList = data
-    )
+      (data: TypeRisk[]) => this.typeRiskList = data
+    );
+
     this._policyService.getTypeCovering().subscribe(
-      data => this.typeCoveringList = data
-    )
+      (data: TypeCovering[]) => this.typeCoveringList = data
+    );
 
     if (this.policyId > 0) {
       this.title = "Edit";
