@@ -42,14 +42,14 @@ export class PolicyService {
       .catch(this.errorHandler)
   }
 
-  savePolicy(Policy) {
-    return this._http.post(this.myAppUrl + 'api/Policy/Create', Policy)
+  savePolicy(policy: Policy) {
+    return this._http.post(this.myAppUrl + 'api/Policy/Create', policy)
       .map((response: Response) => response.json())
       .catch(this.errorHandler)
   }
 
-  updatePolicy(Policy) {
-    return this._http.put(this.myAppUrl + 'api/Policy/Edit', Policy)
+  updatePolicy(policy: Policy) {
+    return this._http.put(this.myAppUrl + 'api/Policy/Edit', policy)
       .map((response: Response) => response.json())
       .catch(this.errorHandler);
   }
