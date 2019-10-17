@@ -17,49 +17,52 @@ namespace cmejia.test.gap2.Controllers
         }
 
         [HttpGet]
-        [Route("api/Policy/Index")]
+        [Route("Index")]
         public IEnumerable<Policy> Index()
         {
             return objpolicy.GetAllPolicy();
         }
 
         [HttpPost]
-        [Route("api/Policy/Create")]
-        public int Create([FromBody] Policy policy)
+        [Route("Create")]
+        public int Create(Policy policy)
         {
-            return objpolicy.AddPolicy(policy);
+            if (policy != null)
+                return objpolicy.AddPolicy(policy);
+            else
+                return 0;
         }
 
         [HttpGet]
-        [Route("api/Policy/Details/{id}")]
+        [Route("Details/{id}")]
         public Policy Details(int id)
         {
             return objpolicy.GetPolicyData(id);
         }
 
         [HttpPut]
-        [Route("api/Policy/Edit")]
+        [Route("Edit")]
         public int Edit([FromBody]Policy Policy)
         {
             return objpolicy.UpdatePolicy(Policy);
         }
 
         [HttpDelete]
-        [Route("api/Policy/Delete/{id}")]
+        [Route("Delete/{id}")]
         public int Delete(int id)
         {
             return objpolicy.DeletePolicy(id);
         }
 
         [HttpGet]
-        [Route("api/Policy/GetTypeRisk")]
+        [Route("GetTypeRisk")]
         public IEnumerable<TypeRisk> TypeRiskDetails()
         {
             return objpolicy.GetTypeRisks();
         }
 
         [HttpGet]
-        [Route("api/Policy/GetTypeCovering")]
+        [Route("GetTypeCovering")]
         public IEnumerable<TypeCovering> TypeCoveringDetails()
         {
             return objpolicy.GetTypeCoverings();

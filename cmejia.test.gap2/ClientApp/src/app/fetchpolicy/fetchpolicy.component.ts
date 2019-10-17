@@ -1,17 +1,16 @@
-import { Component, Inject } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Component } from '@angular/core';
 import { PolicyService } from '../services/policyservice.service';
 import { Policy } from '../../models/policy';
 
 @Component({
+  selector: 'app-fetchpolicy',
   templateUrl: './fetchpolicy.component.html'
 })
 
 export class FetchPolicyComponent {
   public policyList: Policy[];
 
-  constructor(public http: Http, private _router: Router, private _PolicyService: PolicyService) {
+  constructor(private _PolicyService: PolicyService) {
     this.getPolicys();
   }
 
@@ -42,3 +41,4 @@ interface PolicyData {
   typeCovering: number;
 
 }
+

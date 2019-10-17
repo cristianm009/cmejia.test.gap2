@@ -13,6 +13,9 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 
 import { FetchPolicyComponent } from './fetchpolicy/fetchpolicy.component';
 import { AddPolicyComponent } from './addpolicy/addpolicy.component';
+import { ReactiveFormsModule } from '@angular/forms';
+
+import { HttpModule } from '@angular/http';
 
 @NgModule({
   declarations: [
@@ -22,12 +25,14 @@ import { AddPolicyComponent } from './addpolicy/addpolicy.component';
     CounterComponent,
     FetchDataComponent,
     FetchPolicyComponent,
-    AddPolicyComponent,
+    AddPolicyComponent, 
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
+    HttpModule,
     RouterModule.forRoot([
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },

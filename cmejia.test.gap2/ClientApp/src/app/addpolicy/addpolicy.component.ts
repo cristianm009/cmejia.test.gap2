@@ -1,14 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Headers } from '@angular/http';
-import { NgForm, FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FetchPolicyComponent } from '../fetchpolicy/fetchpolicy.component';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PolicyService } from '../services/policyservice.service';
 import { TypeRisk } from '../../models/typeRisk';
 import { TypeCovering } from '../../models/typeCovering';
-import { Response } from '@angular/http';
 
 @Component({
+  selector: 'app-addpolicy',
   templateUrl: './addpolicy.component.html'
 })
 
@@ -83,10 +81,10 @@ export class AddPolicyComponent implements OnInit {
   }
 
   get name() { return this.policyForm.get('name'); }
-  get description() { return this.typeRisk.get('description'); }
-  get startVadilityTime() { return this.typeRisk.get('startVadilityTime'); }
-  get coveragetime() { return this.typeRisk.get('coveragetime'); }
-  get price() { return this.typeRisk.get('price'); }
-  get typeRisk() { return this.typeRisk.get('typeRisk'); }
-  get typeCovering() { return this.typeRisk.get('typeCovering'); }
+  get description() { return this.policyForm.get('description'); }
+  get startVadilityTime() { return this.policyForm.get('startVadilityTime'); }
+  get coveragetime() { return this.policyForm.get('coveragetime'); }
+  get price() { return this.policyForm.get('price'); }
+  get typeRisk() { return this.policyForm.get('typeRisk'); }
+  get typeCovering() { return this.policyForm.get('typeCovering'); }
 }

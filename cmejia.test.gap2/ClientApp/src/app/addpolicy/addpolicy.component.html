@@ -14,20 +14,47 @@
   </div>
 
   <div class="form-group row">
-    <label class="control-label col-md-12" for="City">City</label>
+    <label class=" control-label col-md-12">Description</label>
     <div class="col-md-4">
-      <select class="form-control" data-val="true" formControlName="city">
-        <option value="">--Select City--</option>
-        <option *ngFor="let city of cityList"
-                value={{city.cityName}}>
-          {{city.cityName}}
-        </option>
-      </select>
+      <input class="form-control" type="text" formControlName="description">
     </div>
-    <span class="text-danger" *ngIf="city.invalid && formDir.submitted">
-      City is required
+    <span class="text-danger" *ngIf="description.invalid && formDir.submitted">
+      Description is required.
     </span>
   </div>
+
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Price</label>
+    <div class="col-md-4">
+      <input class="form-control" type="number" formControlName="price">
+    </div>
+    <span class="text-danger" *ngIf="price.invalid && formDir.submitted">
+      Price is required.
+    </span>
+  </div>
+
+
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Start Vadility Time</label>
+    <div class="col-md-4">
+      <input class="form-control" type="date" formControlName="startVadilityTime">
+    </div>
+    <span class="text-danger" *ngIf="startVadilityTime.invalid && formDir.submitted">
+      Start Vadility Time is required.
+    </span>
+  </div>
+  
+
+  <div class="form-group row">
+    <label class=" control-label col-md-12">Coverage time</label>
+    <div class="col-md-4">
+      <input class="form-control" type="number" formControlName="coveragetime">
+    </div>
+    <span class="text-danger" *ngIf="coveragetime.invalid && formDir.submitted">
+      Coveragetime is required.
+    </span>
+  </div>
+  
 
   <div class="form-group row">
     <label class="control-label col-md-12" for="TypeRisk">TypeRisk</label>
@@ -40,10 +67,12 @@
         </option>
       </select>
     </div>
-    <span class="text-danger" *ngIf="city.invalid && formDir.submitted">
+    <span class="text-danger" *ngIf="typeRisk?.invalid && formDir.submitted">
       Type Risk is required
     </span>
   </div>
+
+
 
   <div class="form-group row">
     <label class="control-label col-md-12" for="TypeCovering">TypeCovering</label>
@@ -56,11 +85,11 @@
         </option>
       </select>
     </div>
-    <span class="text-danger" *ngIf="city.invalid && formDir.submitted">
+    <span class="text-danger" *ngIf="typeCovering?.invalid && formDir.submitted">
       Type Covering is required
     </span>
   </div>
-
+  <hr />
   <div class="form-group">
     <button type="submit" class="btn btn-default">Save</button>
     <button class="btn" (click)="cancel()">Cancel</button>
